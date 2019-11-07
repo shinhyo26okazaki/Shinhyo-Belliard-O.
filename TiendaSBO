@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+/*  TIENDA PRAC PUNTUABLE ITLA BY SHINHYO BELLIARD OKAZAKI 2018-6937*/
+/*condiciones especiales */
+/*AAA = A gratis*/
+/*BB = B/2*/
+/*CBD = B-B%25*/
+/*EEEE y F = 0 no puede comprar mas E hasta que compre otra F*/
+int main()
+{
+    int A = 0; //valor de A = 5
+    int a = 3;
+    int B = 0; //10
+    float b = 0;
+    int cb = 2;
+    int C = 0; //15
+    int D = 0; //20
+    int E = 0; //25
+    int ce = 4;
+    int F = 0; //30
+    int f = 0;
+    int cf = 0;
+    int cbd = 1; //                  OJO !!!!!!!!!!
+    int ca = 0;  // LOS ARTICULOS QUE VA A INGRESAR TIENEN QUE
+    int cbc = 0; //          ESTAR EN MAYUSCULA
+    char produc;
+
+    printf("que desea comprar (A,B,C,D,E,F): ");
+    while (produc != 13) //Mientras que la tecla que entre sea diferente a enter.
+    {
+        produc = getche(); //coge el valor ASCII que introdujo
+
+        switch (produc) //en este switch reconoce el tipo de articulo que es y aumenta su variable en uno.
+        {
+        case 'A':
+            A++;
+            ca++;
+            break;
+        case 'B':
+            B++;
+            cbc++;
+            break;
+        case 'C':
+            C++;
+            break;
+        case 'D':
+            D++;
+            break;
+        case 'E':
+            E++;
+            break;
+        case 'F':
+            F++;
+            f++;
+            break;
+        default:
+            break;
+        }
+
+        if (A == a) //aqui a = 3 por la oferta de que si compra 3A una A sale gratis
+        {
+            A--;       //como la 3 es gratis le resto 1 a A
+            a = A + 3; // aumento el condicional 'a' para la proxima vez que compre 3A
+        }
+        if (B == cb) // aqui cb = 2 por la oferta de si comprar 2B una B sale a mitad de precio
+        {
+            B--;        //como una sale a mitad le resto una y el valor de B/2 lo guardo en 'b'
+            b = b + 5;  //como B vale 10 la mitad el 5
+            cb = B + 2; //aumento el condicional 'b' para la proxima vez que compre 2B
+        }
+        if (D >= cbd && B == cb - 1 && C >= cbd) //para la oferta CBD y B %25 de descuento
+        {
+            B--;
+            b = b + 10 * 0.25; //se le aplica el %25 de descuento
+            cbd++;             //cambio el condicional para la proxima vez que se cumpla porque si se queda igual va a entrar todas las veces
+        }
+        if (E == ce && F == cf) //cuando hay 4E y no ha comprado ni un a F, ce = 4 y cf = 0.
+        {
+            printf("\nno puede serguir comprando E a menos que compre una o mas F \n");
+        }
+        if (F > cf) //si compra una F aqui aumenta la cantidad permitida de E
+        {
+            ce = ce + 4; //ce aumenta que es el condicional para dejar comprar mas E
+            cf++;        //aumenta el condicional para la proxima
+        }
+    }
+
+    int und = ca + cbc + C + D + E;            //total de compra de los articulos
+    B = (B * 10) + b;                          //valor de B = 10
+    float itebis = (A + B + C + D + E) * 0.18; //calculo del itebis
+    float total = A + B + C + D + E + F;       //total de el precio de todos los articulos
+
+    printf("\n         FACTURA  \n");
+    printf("\n");
+    printf("     UND   DESCRIPCION   PRECIO \n");
+    printf("\n");
+    printf("     %d       A          %d   \n", ca, A * 5); //valor de A = 5
+    printf("     %d       B          %d   \n", cbc, B);    //valor de B = 10
+    printf("     %d       C          %d   \n", C, C * 15); //valor de C = 15
+    printf("     %d       D          %d   \n", D, D * 20); //valor de D = 20
+    printf("     %d       E          %d   \n", E, E * 25); //valor de E = 25
+    printf("     %d       F          %d   \n", F, F * 30); //valor de F = 30
+    printf("                   ITEBIS %.2f   \n", itebis);
+    printf("Total %d                  %.2f   \n", und, itebis + total);
+    printf("     GRACIAS POR SU COMPRA     \n");
+}
