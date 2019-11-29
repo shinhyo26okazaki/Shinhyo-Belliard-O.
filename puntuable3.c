@@ -521,13 +521,13 @@ void parser(char entrada[])
         else if (strncmp(name, "c", 1) == 0)
         {
             checkc();
-            c = xc / ((1 / 3.1416 * 2) * (f));
+            c = xc / (f / 6.2832);
             printf("\nc = %f uF\n", c);
         }
         else if (strncmp(name, "f", 1) == 0)
         {
             checkf();
-            f = w / 2 * 3.1416;
+            f = w / 6.2832;
             printf("\nf = %f Hz\n", f);
         }
         else if (strncmp(name, "z", 1) == 0)
@@ -541,7 +541,7 @@ void parser(char entrada[])
             checkxl();
             if (v2 == 0)
             {
-                xl = (2 * 3.1416) * f * l;
+                xl = (6.2832) * f * l;
             }
             else
             {
@@ -596,7 +596,7 @@ void parser(char entrada[])
         {
             checkvl();
             vl = i * xl;
-            printf("\nvl = %f voltios\n", i);
+            printf("\nvl = %f voltios\n", vl);
         }
         else if (strncmp(name, "vc", 2) == 0)
         {
@@ -613,7 +613,7 @@ void parser(char entrada[])
         else if (strncmp(name, "p", 1) == 0)
         {
             checkp();
-            p = (rc * z) * pow(i, 2);
+            p = rc * z * pow(i, 2);
             printf("\np = %f W\n", p);
         }
         else if (strncmp(name, "q", 1) == 0)
