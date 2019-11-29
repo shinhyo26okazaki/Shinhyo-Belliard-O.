@@ -512,12 +512,6 @@ void parser(char entrada[])
             r = vr / i;
             printf("\nr = %fohm\n", r);
         }
-        else if (strncmp(name, "v", 1) == 0)
-        {
-            checkv();
-            v = i * z;
-            printf("\nv = %f voltios\n", v);
-        }
         else if (strncmp(name, "l", 1) == 0)
         {
             checkl();
@@ -633,6 +627,12 @@ void parser(char entrada[])
             checkrc();
             rc = p / z * pow(i, 2);
             printf("\nrc = %f ohm\n", rc);
+        }
+        else if (strncmp(name, "v", 1) == 0)
+        {
+            checkv();
+            v = i * z;
+            printf("\nv = %f voltios\n", v);
         }
     }
     clearvalue();
