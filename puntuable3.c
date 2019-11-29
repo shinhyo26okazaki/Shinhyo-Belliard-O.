@@ -79,6 +79,7 @@ void clearvalue()
     n = 0;
     n1 = 0;
     fname = 0;
+    formulas = 0;
     exponente = 0;
 }
 //********************************************************
@@ -221,16 +222,7 @@ void checkxc() //existe otra formula
 }
 void checki()
 {
-    if (vr == 0 && vl == 0 && vc == 0)
-    {
-        printf("\nfalta el valor de vc=");
-        scanf("%f", &vc);
-    }
-    if (r == 0 && xl == 0 && xc == 0)
-    {
-        printf("\nfalta el valor de xc=");
-        scanf("%f", &xc);
-    }
+
     if (v != 0 && z == 0)
     {
         printf("\nfalta el valor de z=");
@@ -271,6 +263,16 @@ void checki()
     {
         printf("\nfalta el valor de vc=");
         scanf("%f", &vc);
+    }
+    if (vr == 0 && vl == 0 && vc == 0 && z == 0 && v == 0)
+    {
+        printf("\nfalta el valor de vc=");
+        scanf("%f", &vc);
+    }
+    if (r == 0 && xl == 0 && xc == 0 && z == 0 && v == 0)
+    {
+        printf("\nfalta el valor de xc=");
+        scanf("%f", &xc);
     }
 }
 void checkw()
